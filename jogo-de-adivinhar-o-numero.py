@@ -18,18 +18,20 @@ def jogar_adivinhacao():
         try:
             print("Tente adivinhar o número (", numero_minimo, "-", numero_maximo, ")")
             numero_escolhido = int(input())
-        except:
-            raise ValueError("Entrada inválida: invalid literal for int() with base 10: ", numero_escolhido)
-        if numero_escolhido < 1 or numero_escolhido >100:
-            raise ValueError("Entrada inválida: Número fora do intervalo! Digite um número entre 1 e 100.")
-        
-        if numero_escolhido == numero_aleatorio:
-            print("Parabéns! Você acertou o número", numero_aleatorio, "!")
-        elif numero_escolhido > numero_aleatorio:
-            print("Muito alto! Tente novamente:", numero_escolhido, ".")
-            numero_maximo = numero_escolhido-1
-        elif numero_escolhido < numero_aleatorio:
-            print("Muito baixo! Tente novamente:", numero_escolhido, ".")
-            numero_minimo = numero_escolhido+1
-        
+            if numero_escolhido < 1 or numero_escolhido > 100:
+                raise ValueError("fora_intervalo")
+            if numero_escolhido == numero_aleatorio:
+                print("Parabéns! Você acertou o número", numero_aleatorio, "!")
+            elif numero_escolhido > numero_aleatorio:
+                print("Muito alto! Tente novamente:", numero_escolhido, ".")
+                numero_maximo = numero_escolhido-1
+            elif numero_escolhido < numero_aleatorio:
+                print("Muito baixo! Tente novamente:", numero_escolhido, ".")
+                numero_minimo = numero_escolhido+1
+        except ValueError as e:
+            if str(e) == "fora_intervalo":
+                print("Entrada inválida: Número fora do intervalo! Digite um número entre 1 e 100.")
+            else:
+                print("Entrada inválida: invalid literal for int() with base 10")
+
 jogar_adivinhacao()
