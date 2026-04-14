@@ -10,7 +10,7 @@ def calculadora():
     Sem argumentos.
     Sem retorno.
     """
-    operadores = ['+', '-', '*', '/']
+    operadores = ["+", "-", "*", "/"]
     resultado = 0
     operação_escolhida = '/'
     try:
@@ -20,7 +20,7 @@ def calculadora():
         return
     try:
         operacao_escolhida = input("Escolha a operação (+, -, *, /): ")
-        if operacao_escolhida in operadores == False:
+        if operacao_escolhida not in operadores:
             raise ValueError
     except ValueError:
         print("Opção inválida")
