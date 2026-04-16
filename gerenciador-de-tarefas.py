@@ -100,17 +100,19 @@ def remover_tarefa():
         os.system('cls')     
         listar_tarefas()
         try:    
-            tarefa_remover = int(input("Digite o número da tarefa a ser removida"))
-            if tarefa_remover > len(tarefas) or tarefa_remover < 1:
+            tarefa_remover = int(input("Digite o número da tarefa a ser removida ou 0 para voltar: "))
+            if tarefa_remover > len(tarefas) or tarefa_remover < 0:
                 print(f"Erro: Opção inválida! Escolha uma opção entre 1 e {len(tarefas)}.")
             else:
                 break
         except ValueError:
             print("Erro: Entrada inválida! Digite um número.")
             input("Digite Enter para tentar novamente")
-    
-    del tarefas[tarefa_remover - 1]
-    return
+    if tarefa_remover == 0:
+        return
+    else:
+        del tarefas[tarefa_remover - 1]
+        return
             
 
 main()
